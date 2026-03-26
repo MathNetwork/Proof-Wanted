@@ -51,6 +51,15 @@ const SUMMARIES: Record<string, string> = {
     "Harmonic functions on bounded domains attain their maximum on the boundary.",
 };
 
+/** Strip common emoji used as status markers in source READMEs. */
+function stripEmoji(s: string): string {
+  return s
+    .replace(/✅/g, "[yes]")
+    .replace(/⚠️?/g, "[partial]")
+    .replace(/❌/g, "[no]")
+    .replace(/🔴|🟢|🟡/g, "");
+}
+
 function extractSection(content: string, heading: string): string {
   const regex = new RegExp(
     `^##\\s+${heading.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\s*\\n([\\s\\S]*?)(?=^##\\s|$)`,
@@ -58,7 +67,7 @@ function extractSection(content: string, heading: string): string {
   );
   const match = content.match(regex);
   if (!match) return "";
-  return match[1].replace(/<!--[\s\S]*?-->/g, "").trim();
+  return stripEmoji(match[1].replace(/<!--[\s\S]*?-->/g, "").trim());
 }
 
 function extractField(content: string, heading: string): string {
@@ -132,7 +141,7 @@ export function getAllCandidates(): Candidate[] {
           readmeContent,
           "Proof Complexity Estimate"
         ),
-        leanCode,
+        leanCode: leanCode.replace(/✅|⚠️?|❌|🔴|🟢|🟡/g, "").replace(/  +/g, " "),
         contributor: extractField(readmeContent, "Contributor"),
       });
     }

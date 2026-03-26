@@ -1,5 +1,10 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import {
+  CheckCircleIcon,
+  ExclamationTriangleIcon,
+  XCircleIcon,
+} from "@heroicons/react/16/solid";
 import { getAllCandidates, getCandidate } from "@/lib/candidates";
 import LeanCodeBlock from "@/components/LeanCodeBlock";
 import MarkdownContent from "@/components/MarkdownContent";
@@ -8,15 +13,30 @@ export function generateStaticParams() {
   return getAllCandidates().map((c) => ({ slug: c.slug }));
 }
 
-function StatusText({ status }: { status: string }) {
-  const map: Record<string, { label: string; color: string }> = {
-    verified: { label: "Verified", color: "text-[#4ade80]" },
-    draft: { label: "Draft", color: "text-[#fbbf24]" },
-    partial: { label: "Partial", color: "text-[#fbbf24]" },
-    blocked: { label: "Blocked", color: "text-[#f87171]" },
-  };
-  const { label, color } = map[status] ?? map.draft;
-  return <span className={color}>{label}</span>;
+function StatusIndicator({ status }: { status: string }) {
+  switch (status) {
+    case "verified":
+      return (
+        <span className="inline-flex items-center gap-1 text-[#4ade80]">
+          <CheckCircleIcon className="h-3.5 w-3.5" />
+          Verified
+        </span>
+      );
+    case "blocked":
+      return (
+        <span className="inline-flex items-center gap-1 text-[#f87171]">
+          <XCircleIcon className="h-3.5 w-3.5" />
+          Blocked
+        </span>
+      );
+    default:
+      return (
+        <span className="inline-flex items-center gap-1 text-[#fbbf24]">
+          <ExclamationTriangleIcon className="h-3.5 w-3.5" />
+          {status === "partial" ? "Partial" : "Draft"}
+        </span>
+      );
+  }
 }
 
 export default async function ProblemPage({
@@ -51,7 +71,7 @@ export default async function ProblemPage({
       </h1>
 
       <p className="mt-2 text-sm text-[#888899]">
-        {meta.join(" · ")} · <StatusText status={c.status} />
+        {meta.join(" · ")} · <StatusIndicator status={c.status} />
       </p>
 
       <hr className="my-8 border-[#2a2a3a]" />

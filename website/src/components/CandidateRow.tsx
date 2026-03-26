@@ -1,15 +1,35 @@
 import Link from "next/link";
+import {
+  CheckCircleIcon,
+  ExclamationTriangleIcon,
+  XCircleIcon,
+} from "@heroicons/react/16/solid";
 import type { Candidate } from "@/lib/candidates";
 
-function StatusText({ status }: { status: Candidate["status"] }) {
-  const map: Record<string, { label: string; color: string }> = {
-    verified: { label: "Verified", color: "text-[#4ade80]" },
-    draft: { label: "Draft", color: "text-[#fbbf24]" },
-    partial: { label: "Partial", color: "text-[#fbbf24]" },
-    blocked: { label: "Blocked", color: "text-[#f87171]" },
-  };
-  const { label, color } = map[status] ?? map.draft;
-  return <span className={color}>{label}</span>;
+function StatusIndicator({ status }: { status: Candidate["status"] }) {
+  switch (status) {
+    case "verified":
+      return (
+        <span className="inline-flex items-center gap-1 text-[#4ade80]">
+          <CheckCircleIcon className="h-3.5 w-3.5" />
+          Verified
+        </span>
+      );
+    case "blocked":
+      return (
+        <span className="inline-flex items-center gap-1 text-[#f87171]">
+          <XCircleIcon className="h-3.5 w-3.5" />
+          Blocked
+        </span>
+      );
+    default:
+      return (
+        <span className="inline-flex items-center gap-1 text-[#fbbf24]">
+          <ExclamationTriangleIcon className="h-3.5 w-3.5" />
+          {status === "partial" ? "Partial" : "Draft"}
+        </span>
+      );
+  }
 }
 
 export default function CandidateRow({ candidate }: { candidate: Candidate }) {
@@ -30,10 +50,10 @@ export default function CandidateRow({ candidate }: { candidate: Candidate }) {
         <div className="shrink-0 text-right text-sm">
           <div className="text-[#888899]">{candidate.area}</div>
           <div className="mt-1 space-x-2">
-            <StatusText status={candidate.status} />
+            <StatusIndicator status={candidate.status} />
             {candidate.estimatedLines && (
               <span className="text-[#555566]">
-                {candidate.estimatedLines} lines
+                · {candidate.estimatedLines} lines
               </span>
             )}
           </div>

@@ -1,0 +1,7 @@
+@import "tailwindcss";
+@import "katex/dist/katex.min.css";
+
+body {
+  background: #0f0f17;
+  color: #e0e0e0;
+}

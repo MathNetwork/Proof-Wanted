@@ -42,3 +42,27 @@ lean_lib FranklSemimodular where
 lean_lib DavenportRankTwo where
   srcDir := "candidates/davenport-rank-two"
   roots := #[`Statement]
+
+lean_lib AzumaHoeffding where
+  srcDir := "candidates/azuma-hoeffding"
+  roots := #[`Statement]
+
+lean_lib Kolmogorov01 where
+  srcDir := "candidates/kolmogorov-01"
+  roots := #[`Statement]
+
+lean_lib PoincareInequality where
+  srcDir := "candidates/poincare-inequality"
+  roots := #[`Statement]
+
+lean_lib LaxMilgram where
+  srcDir := "candidates/lax-milgram"
+  roots := #[`Statement]
+
+lean_lib RellichKondrachov where
+  srcDir := "candidates/rellich-kondrachov"
+  roots := #[`Statement]
+
+lean_lib MaximumPrincipleHarmonic where
+  srcDir := "candidates/maximum-principle-harmonic"
+  roots := #[`Statement]

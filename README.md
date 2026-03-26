@@ -15,8 +15,14 @@ A curated collection of mathematical theorems and conjectures proposed for forma
 | [Coarea formula](candidates/coarea-formula/) | known-theorem | Geometric Measure Theory | ✅ compiles | [Lean](candidates/coarea-formula/Statement.lean) |
 | [Frankl's conjecture (semimodular)](candidates/frankl-semimodular/) | open-conjecture | Combinatorics | ✅ compiles | [Lean](candidates/frankl-semimodular/Statement.lean) |
 | [Davenport constant of ℤₙ²](candidates/davenport-rank-two/) | open-conjecture | Additive Combinatorics | ✅ compiles | [Lean](candidates/davenport-rank-two/Statement.lean) |
+| [Azuma-Hoeffding inequality](candidates/azuma-hoeffding/) | known-theorem | Probability Theory | ✅ compiles | [Lean](candidates/azuma-hoeffding/Statement.lean) |
+| [Kolmogorov zero-one law](candidates/kolmogorov-01/) | known-theorem | Probability Theory | ✅ compiles | [Lean](candidates/kolmogorov-01/Statement.lean) |
+| [Poincaré inequality](candidates/poincare-inequality/) | known-theorem | PDE | ✅ compiles | [Lean](candidates/poincare-inequality/Statement.lean) |
+| [Lax-Milgram theorem](candidates/lax-milgram/) | known-theorem | Functional Analysis | ✅ compiles | [Lean](candidates/lax-milgram/Statement.lean) |
+| [Rellich-Kondrachov compactness](candidates/rellich-kondrachov/) | known-theorem | PDE | ⚠️ partial | [Lean](candidates/rellich-kondrachov/Statement.lean) |
+| [Maximum principle (complex)](candidates/maximum-principle-harmonic/) | known-theorem | Complex Analysis | ✅ compiles | [Lean](candidates/maximum-principle-harmonic/Statement.lean) |
 
-**Status key:** ✅ compiles = statement type-checks with `sorry` proofs against current Mathlib
+**Status key:** ✅ compiles = statement type-checks with `sorry` proofs against current Mathlib | ⚠️ partial = fallback statement due to missing Mathlib definitions
 
 ## Building / Verifying
 
@@ -28,7 +34,8 @@ cd formalization-candidates
 lake exe cache get    # download prebuilt Mathlib oleans
 lake build SL2RTraceClassification SL2RHomogeneousSpace CayleyTransform \
   CantorSetDimH BesicovitchCovering SardTheorem CoareaFormula \
-  FranklSemimodular DavenportRankTwo
+  FranklSemimodular DavenportRankTwo AzumaHoeffding Kolmogorov01 \
+  PoincareInequality LaxMilgram RellichKondrachov MaximumPrincipleHarmonic
 ```
 
 Each candidate is a separate `lean_lib` target. Build individually with e.g. `lake build SardTheorem`.

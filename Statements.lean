@@ -1,7 +1,0 @@
-import Statements.HyperbolicTraceClassification
-import Statements.HyperbolicHomogeneous
-import Statements.CayleyTransform
-import Statements.SelfSimilarDimH
-import Statements.BesicovitchCovering
-import Statements.SardTheorem
-import Statements.CoareaFormula

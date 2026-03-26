@@ -61,6 +61,18 @@ lean_lib MaximumPrincipleHarmonic where
   srcDir := "candidates/known-theorems/maximum-principle-harmonic"
   roots := #[`Statement]
 
+lean_lib WassersteinMetric where
+  srcDir := "candidates/known-theorems/wasserstein-metric"
+  roots := #[`Statement]
+
+lean_lib KantorovichDualityDiscrete where
+  srcDir := "candidates/known-theorems/kantorovich-duality-discrete"
+  roots := #[`Statement]
+
+lean_lib OptimalCouplingExistence where
+  srcDir := "candidates/known-theorems/optimal-coupling-existence"
+  roots := #[`Statement]
+
 -- Open conjectures
 
 lean_lib FranklSemimodular where

@@ -21,6 +21,9 @@ A curated collection of mathematical theorems and conjectures proposed for forma
 | [Lax-Milgram theorem](candidates/known-theorems/lax-milgram/) | Functional Analysis | ✅ compiles | [Lean](candidates/known-theorems/lax-milgram/Statement.lean) |
 | [Rellich-Kondrachov compactness](candidates/known-theorems/rellich-kondrachov/) | PDE | ⚠️ partial | [Lean](candidates/known-theorems/rellich-kondrachov/Statement.lean) |
 | [Maximum principle (complex)](candidates/known-theorems/maximum-principle-harmonic/) | Complex Analysis | ✅ compiles | [Lean](candidates/known-theorems/maximum-principle-harmonic/Statement.lean) |
+| [Wasserstein metric](candidates/known-theorems/wasserstein-metric/) | Optimal Transport | ✅ compiles | [Lean](candidates/known-theorems/wasserstein-metric/Statement.lean) |
+| [Kantorovich duality (discrete)](candidates/known-theorems/kantorovich-duality-discrete/) | Optimal Transport | ✅ compiles | [Lean](candidates/known-theorems/kantorovich-duality-discrete/Statement.lean) |
+| [Optimal coupling existence](candidates/known-theorems/optimal-coupling-existence/) | Optimal Transport | ✅ compiles | [Lean](candidates/known-theorems/optimal-coupling-existence/Statement.lean) |
 
 ### Open Conjectures
 
@@ -42,7 +45,8 @@ lake exe cache get    # download prebuilt Mathlib oleans
 lake build SL2RTraceClassification SL2RHomogeneousSpace CayleyTransform \
   CantorSetDimH BesicovitchCovering SardTheorem CoareaFormula \
   AzumaHoeffding Kolmogorov01 PoincareInequality LaxMilgram \
-  RellichKondrachov MaximumPrincipleHarmonic FranklSemimodular DavenportRankTwo
+  RellichKondrachov MaximumPrincipleHarmonic WassersteinMetric \
+  KantorovichDualityDiscrete OptimalCouplingExistence FranklSemimodular DavenportRankTwo
 ```
 
 Each candidate is a separate `lean_lib` target. Build individually with e.g. `lake build SardTheorem`.

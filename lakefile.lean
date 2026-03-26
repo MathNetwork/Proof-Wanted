@@ -82,3 +82,27 @@ lean_lib FranklSemimodular where
 lean_lib DavenportRankTwo where
   srcDir := "candidates/open-conjectures/davenport-rank-two"
   roots := #[`Statement]
+
+lean_lib ErdosStraus where
+  srcDir := "candidates/open-conjectures/erdos-straus"
+  roots := #[`Statement]
+
+lean_lib SunflowerConjecture where
+  srcDir := "candidates/open-conjectures/sunflower-conjecture"
+  roots := #[`Statement]
+
+lean_lib ChvatalConjecture where
+  srcDir := "candidates/open-conjectures/chvatal-conjecture"
+  roots := #[`Statement]
+
+lean_lib ErdosMatching where
+  srcDir := "candidates/open-conjectures/erdos-matching"
+  roots := #[`Statement]
+
+lean_lib SensitivityConjectureTight where
+  srcDir := "candidates/open-conjectures/sensitivity-conjecture-tight"
+  roots := #[`Statement]
+
+lean_lib EquationalTheoriesSamples where
+  srcDir := "candidates/open-conjectures/equational-theories-samples"
+  roots := #[`Statement]

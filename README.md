@@ -31,6 +31,12 @@ A curated collection of mathematical theorems and conjectures proposed for forma
 |-----------|------|--------|-----------|
 | [Frankl's conjecture (semimodular)](candidates/open-conjectures/frankl-semimodular/) | Combinatorics | ✅ compiles | [Lean](candidates/open-conjectures/frankl-semimodular/Statement.lean) |
 | [Davenport constant of ℤₙ²](candidates/open-conjectures/davenport-rank-two/) | Additive Combinatorics | ✅ compiles | [Lean](candidates/open-conjectures/davenport-rank-two/Statement.lean) |
+| [Erdos-Straus conjecture](candidates/open-conjectures/erdos-straus/) | Number Theory | ✅ compiles | [Lean](candidates/open-conjectures/erdos-straus/Statement.lean) |
+| [Sunflower conjecture](candidates/open-conjectures/sunflower-conjecture/) | Combinatorics | ✅ compiles | [Lean](candidates/open-conjectures/sunflower-conjecture/Statement.lean) |
+| [Chvatal's conjecture](candidates/open-conjectures/chvatal-conjecture/) | Combinatorics | ✅ compiles | [Lean](candidates/open-conjectures/chvatal-conjecture/Statement.lean) |
+| [Erdos matching conjecture](candidates/open-conjectures/erdos-matching/) | Combinatorics | ✅ compiles | [Lean](candidates/open-conjectures/erdos-matching/Statement.lean) |
+| [Sensitivity conjecture (tight)](candidates/open-conjectures/sensitivity-conjecture-tight/) | Combinatorics | ✅ compiles | [Lean](candidates/open-conjectures/sensitivity-conjecture-tight/Statement.lean) |
+| [Equational theories (samples)](candidates/open-conjectures/equational-theories-samples/) | Universal Algebra | ✅ compiles | [Lean](candidates/open-conjectures/equational-theories-samples/Statement.lean) |
 
 **Status key:** ✅ compiles = statement type-checks with `sorry` proofs against current Mathlib | ⚠️ partial = fallback statement due to missing Mathlib definitions
 

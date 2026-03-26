@@ -8,11 +8,12 @@ export default function AboutPage() {
   try {
     content = fs.readFileSync(contributingPath, "utf-8");
   } catch {
-    content = "# Contributing\n\nSee the [GitHub repo](https://github.com/MathNetwork/Proof-Wanted) for details.";
+    content =
+      "# Contributing\n\nSee the [GitHub repo](https://github.com/MathNetwork/Proof-Wanted) for details.";
   }
 
   return (
-    <div className="mx-auto max-w-3xl">
+    <div className="mx-auto max-w-none">
       <MarkdownContent content={content} />
     </div>
   );

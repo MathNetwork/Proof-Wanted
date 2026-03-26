@@ -4,23 +4,30 @@ A curated collection of mathematical theorems and conjectures proposed for forma
 
 ## Candidates
 
-| Candidate | Type | Area | Status | Statement |
-|-----------|------|------|--------|-----------|
-| [SL(2,ℝ) trace classification](candidates/sl2r-trace-classification/) | known-theorem | Hyperbolic Geometry | ✅ compiles | [Lean](candidates/sl2r-trace-classification/Statement.lean) |
-| [SL(2,ℝ)/SO(2) homogeneous space](candidates/sl2r-homogeneous-space/) | known-theorem | Hyperbolic Geometry | ✅ compiles | [Lean](candidates/sl2r-homogeneous-space/Statement.lean) |
-| [Cayley transform](candidates/cayley-transform/) | known-theorem | Complex Analysis | ✅ compiles | [Lean](candidates/cayley-transform/Statement.lean) |
-| [Cantor set Hausdorff dimension](candidates/cantor-set-dimh/) | known-theorem | Geometric Measure Theory | ✅ compiles | [Lean](candidates/cantor-set-dimh/Statement.lean) |
-| [Besicovitch covering theorem](candidates/besicovitch-covering/) | known-theorem | Geometric Measure Theory | ✅ compiles | [Lean](candidates/besicovitch-covering/Statement.lean) |
-| [Sard's theorem](candidates/sard-theorem/) | known-theorem | Differential Topology | ✅ compiles | [Lean](candidates/sard-theorem/Statement.lean) |
-| [Coarea formula](candidates/coarea-formula/) | known-theorem | Geometric Measure Theory | ✅ compiles | [Lean](candidates/coarea-formula/Statement.lean) |
-| [Frankl's conjecture (semimodular)](candidates/frankl-semimodular/) | open-conjecture | Combinatorics | ✅ compiles | [Lean](candidates/frankl-semimodular/Statement.lean) |
-| [Davenport constant of ℤₙ²](candidates/davenport-rank-two/) | open-conjecture | Additive Combinatorics | ✅ compiles | [Lean](candidates/davenport-rank-two/Statement.lean) |
-| [Azuma-Hoeffding inequality](candidates/azuma-hoeffding/) | known-theorem | Probability Theory | ✅ compiles | [Lean](candidates/azuma-hoeffding/Statement.lean) |
-| [Kolmogorov zero-one law](candidates/kolmogorov-01/) | known-theorem | Probability Theory | ✅ compiles | [Lean](candidates/kolmogorov-01/Statement.lean) |
-| [Poincaré inequality](candidates/poincare-inequality/) | known-theorem | PDE | ✅ compiles | [Lean](candidates/poincare-inequality/Statement.lean) |
-| [Lax-Milgram theorem](candidates/lax-milgram/) | known-theorem | Functional Analysis | ✅ compiles | [Lean](candidates/lax-milgram/Statement.lean) |
-| [Rellich-Kondrachov compactness](candidates/rellich-kondrachov/) | known-theorem | PDE | ⚠️ partial | [Lean](candidates/rellich-kondrachov/Statement.lean) |
-| [Maximum principle (complex)](candidates/maximum-principle-harmonic/) | known-theorem | Complex Analysis | ✅ compiles | [Lean](candidates/maximum-principle-harmonic/Statement.lean) |
+### Known Theorems
+
+| Candidate | Area | Status | Statement |
+|-----------|------|--------|-----------|
+| [SL(2,ℝ) trace classification](candidates/known-theorems/sl2r-trace-classification/) | Hyperbolic Geometry | ✅ compiles | [Lean](candidates/known-theorems/sl2r-trace-classification/Statement.lean) |
+| [SL(2,ℝ)/SO(2) homogeneous space](candidates/known-theorems/sl2r-homogeneous-space/) | Hyperbolic Geometry | ✅ compiles | [Lean](candidates/known-theorems/sl2r-homogeneous-space/Statement.lean) |
+| [Cayley transform](candidates/known-theorems/cayley-transform/) | Complex Analysis | ✅ compiles | [Lean](candidates/known-theorems/cayley-transform/Statement.lean) |
+| [Cantor set Hausdorff dimension](candidates/known-theorems/cantor-set-dimh/) | Geometric Measure Theory | ✅ compiles | [Lean](candidates/known-theorems/cantor-set-dimh/Statement.lean) |
+| [Besicovitch covering theorem](candidates/known-theorems/besicovitch-covering/) | Geometric Measure Theory | ✅ compiles | [Lean](candidates/known-theorems/besicovitch-covering/Statement.lean) |
+| [Sard's theorem](candidates/known-theorems/sard-theorem/) | Differential Topology | ✅ compiles | [Lean](candidates/known-theorems/sard-theorem/Statement.lean) |
+| [Coarea formula](candidates/known-theorems/coarea-formula/) | Geometric Measure Theory | ✅ compiles | [Lean](candidates/known-theorems/coarea-formula/Statement.lean) |
+| [Azuma-Hoeffding inequality](candidates/known-theorems/azuma-hoeffding/) | Probability Theory | ✅ compiles | [Lean](candidates/known-theorems/azuma-hoeffding/Statement.lean) |
+| [Kolmogorov zero-one law](candidates/known-theorems/kolmogorov-01/) | Probability Theory | ✅ compiles | [Lean](candidates/known-theorems/kolmogorov-01/Statement.lean) |
+| [Poincaré inequality](candidates/known-theorems/poincare-inequality/) | PDE | ✅ compiles | [Lean](candidates/known-theorems/poincare-inequality/Statement.lean) |
+| [Lax-Milgram theorem](candidates/known-theorems/lax-milgram/) | Functional Analysis | ✅ compiles | [Lean](candidates/known-theorems/lax-milgram/Statement.lean) |
+| [Rellich-Kondrachov compactness](candidates/known-theorems/rellich-kondrachov/) | PDE | ⚠️ partial | [Lean](candidates/known-theorems/rellich-kondrachov/Statement.lean) |
+| [Maximum principle (complex)](candidates/known-theorems/maximum-principle-harmonic/) | Complex Analysis | ✅ compiles | [Lean](candidates/known-theorems/maximum-principle-harmonic/Statement.lean) |
+
+### Open Conjectures
+
+| Candidate | Area | Status | Statement |
+|-----------|------|--------|-----------|
+| [Frankl's conjecture (semimodular)](candidates/open-conjectures/frankl-semimodular/) | Combinatorics | ✅ compiles | [Lean](candidates/open-conjectures/frankl-semimodular/Statement.lean) |
+| [Davenport constant of ℤₙ²](candidates/open-conjectures/davenport-rank-two/) | Additive Combinatorics | ✅ compiles | [Lean](candidates/open-conjectures/davenport-rank-two/Statement.lean) |
 
 **Status key:** ✅ compiles = statement type-checks with `sorry` proofs against current Mathlib | ⚠️ partial = fallback statement due to missing Mathlib definitions
 
@@ -34,8 +41,8 @@ cd formalization-candidates
 lake exe cache get    # download prebuilt Mathlib oleans
 lake build SL2RTraceClassification SL2RHomogeneousSpace CayleyTransform \
   CantorSetDimH BesicovitchCovering SardTheorem CoareaFormula \
-  FranklSemimodular DavenportRankTwo AzumaHoeffding Kolmogorov01 \
-  PoincareInequality LaxMilgram RellichKondrachov MaximumPrincipleHarmonic
+  AzumaHoeffding Kolmogorov01 PoincareInequality LaxMilgram \
+  RellichKondrachov MaximumPrincipleHarmonic FranklSemimodular DavenportRankTwo
 ```
 
 Each candidate is a separate `lean_lib` target. Build individually with e.g. `lake build SardTheorem`.
@@ -49,13 +56,19 @@ Each candidate is a separate `lean_lib` target. Build individually with e.g. `la
 ├── TEMPLATE/              # template for new candidates
 │   ├── README.md
 │   └── Statement.lean
-├── candidates/            # one folder per candidate
-│   ├── <candidate-name>/
-│   │   ├── README.md      # mathematical description
-│   │   └── Statement.lean # Lean 4 statement
-│   └── ...
-├── lakefile.lean          # Lake build configuration
-├── lean-toolchain         # Lean version
+├── candidates/
+│   ├── known-theorems/    # proven results not yet in Lean
+│   │   ├── <name>/
+│   │   │   ├── README.md
+│   │   │   └── Statement.lean
+│   │   └── ...
+│   └── open-conjectures/  # mathematically unproven
+│       ├── <name>/
+│       │   ├── README.md
+│       │   └── Statement.lean
+│       └── ...
+├── lakefile.lean
+├── lean-toolchain
 └── .gitignore
 ```
 
@@ -63,7 +76,7 @@ Each candidate is a separate `lean_lib` target. Build individually with e.g. `la
 
 See [CONTRIBUTING.md](CONTRIBUTING.md). In short:
 
-1. Copy `TEMPLATE/` to `candidates/<your-candidate>/`
+1. Copy `TEMPLATE/` to `candidates/known-theorems/<your-candidate>/` or `candidates/open-conjectures/<your-candidate>/`
 2. Fill in the README and Statement.lean
 3. Verify it compiles: `lake build <YourLibName>`
 4. Open a PR

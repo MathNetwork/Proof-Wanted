@@ -6,6 +6,12 @@
 - **Mathlib:** master @ `4fa57024fc3c96135d09fef7ec9be47f4e3d67ee`
 - **Date:** 2026-03-26
 
+## Repo Structure
+
+Candidates are organized into two subdirectories:
+- `candidates/known-theorems/` — 13 proven results not yet formalized in Lean
+- `candidates/open-conjectures/` — 2 mathematically unproven conjectures
+
 ## Summary
 
 All 15 candidate statements compile successfully against Mathlib (14 fully, 1 partial fallback). Every proof is `sorry` — only the statement signatures are verified to type-check.

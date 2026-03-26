@@ -7,62 +7,66 @@ package «formalization-candidates» where
 require mathlib from git
   "https://github.com/leanprover-community/mathlib4" @ "master"
 
+-- Known theorems
+
 lean_lib SL2RTraceClassification where
-  srcDir := "candidates/sl2r-trace-classification"
+  srcDir := "candidates/known-theorems/sl2r-trace-classification"
   roots := #[`Statement]
 
 lean_lib SL2RHomogeneousSpace where
-  srcDir := "candidates/sl2r-homogeneous-space"
+  srcDir := "candidates/known-theorems/sl2r-homogeneous-space"
   roots := #[`Statement]
 
 lean_lib CayleyTransform where
-  srcDir := "candidates/cayley-transform"
+  srcDir := "candidates/known-theorems/cayley-transform"
   roots := #[`Statement]
 
 lean_lib CantorSetDimH where
-  srcDir := "candidates/cantor-set-dimh"
+  srcDir := "candidates/known-theorems/cantor-set-dimh"
   roots := #[`Statement]
 
 lean_lib BesicovitchCovering where
-  srcDir := "candidates/besicovitch-covering"
+  srcDir := "candidates/known-theorems/besicovitch-covering"
   roots := #[`Statement]
 
 lean_lib SardTheorem where
-  srcDir := "candidates/sard-theorem"
+  srcDir := "candidates/known-theorems/sard-theorem"
   roots := #[`Statement]
 
 lean_lib CoareaFormula where
-  srcDir := "candidates/coarea-formula"
-  roots := #[`Statement]
-
-lean_lib FranklSemimodular where
-  srcDir := "candidates/frankl-semimodular"
-  roots := #[`Statement]
-
-lean_lib DavenportRankTwo where
-  srcDir := "candidates/davenport-rank-two"
+  srcDir := "candidates/known-theorems/coarea-formula"
   roots := #[`Statement]
 
 lean_lib AzumaHoeffding where
-  srcDir := "candidates/azuma-hoeffding"
+  srcDir := "candidates/known-theorems/azuma-hoeffding"
   roots := #[`Statement]
 
 lean_lib Kolmogorov01 where
-  srcDir := "candidates/kolmogorov-01"
+  srcDir := "candidates/known-theorems/kolmogorov-01"
   roots := #[`Statement]
 
 lean_lib PoincareInequality where
-  srcDir := "candidates/poincare-inequality"
+  srcDir := "candidates/known-theorems/poincare-inequality"
   roots := #[`Statement]
 
 lean_lib LaxMilgram where
-  srcDir := "candidates/lax-milgram"
+  srcDir := "candidates/known-theorems/lax-milgram"
   roots := #[`Statement]
 
 lean_lib RellichKondrachov where
-  srcDir := "candidates/rellich-kondrachov"
+  srcDir := "candidates/known-theorems/rellich-kondrachov"
   roots := #[`Statement]
 
 lean_lib MaximumPrincipleHarmonic where
-  srcDir := "candidates/maximum-principle-harmonic"
+  srcDir := "candidates/known-theorems/maximum-principle-harmonic"
+  roots := #[`Statement]
+
+-- Open conjectures
+
+lean_lib FranklSemimodular where
+  srcDir := "candidates/open-conjectures/frankl-semimodular"
+  roots := #[`Statement]
+
+lean_lib DavenportRankTwo where
+  srcDir := "candidates/open-conjectures/davenport-rank-two"
   roots := #[`Statement]

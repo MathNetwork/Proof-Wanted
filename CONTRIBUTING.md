@@ -4,9 +4,12 @@ Thank you for your interest in contributing formalization candidates!
 
 ## Adding a new candidate
 
-1. **Copy the template:**
+1. **Copy the template** into the appropriate subdirectory:
    ```bash
-   cp -r TEMPLATE candidates/your-candidate-name
+   # For a proven theorem:
+   cp -r TEMPLATE candidates/known-theorems/your-candidate-name
+   # For an open conjecture:
+   cp -r TEMPLATE candidates/open-conjectures/your-candidate-name
    ```
 
 2. **Fill in `README.md`** following the template fields: name, type, area, mathematical statement, source, Mathlib infrastructure assessment, and proof complexity estimate.
@@ -19,7 +22,7 @@ Thank you for your interest in contributing formalization candidates!
 4. **Add a `lean_lib` entry** in `lakefile.lean`:
    ```lean
    lean_lib YourCandidateName where
-     srcDir := "candidates/your-candidate-name"
+     srcDir := "candidates/known-theorems/your-candidate-name"  -- or open-conjectures/
      roots := #[`Statement]
    ```
 

@@ -1,5 +1,5 @@
 import { getAllCandidates } from "@/lib/candidates";
-import CandidateRow from "@/components/CandidateRow";
+import CandidateBlock from "@/components/CandidateBlock";
 
 export default function Home() {
   const candidates = getAllCandidates();
@@ -12,32 +12,34 @@ export default function Home() {
       <section className="mb-12">
         <h1 className="text-3xl font-semibold text-white">Proof Wanted</h1>
         <p className="mt-3 text-[#888899]">
-          Open problems and theorems awaiting Lean 4 formalization.
-          {" "}{candidates.length} problems, {verified} verified against Mathlib.
+          Open problems and theorems awaiting Lean 4 formalization.{" "}
+          {candidates.length} problems, {verified} verified against Mathlib.
         </p>
       </section>
 
       {conjectures.length > 0 && (
-        <section className="mb-12">
-          <h2 className="mb-2 text-xs font-semibold uppercase tracking-widest text-[#888899]">
+        <section className="mb-14">
+          <h2 className="mb-1 text-lg font-semibold uppercase tracking-wide text-[#999]">
             Open Conjectures
           </h2>
-          <div className="divide-y divide-[#2a2a3a] border-y border-[#2a2a3a]">
-            {conjectures.map((c) => (
-              <CandidateRow key={c.slug} candidate={c} />
+          <div className="mb-6 border-b border-[#333]" />
+          <div className="space-y-4">
+            {conjectures.map((c, i) => (
+              <CandidateBlock key={c.slug} candidate={c} index={i} />
             ))}
           </div>
         </section>
       )}
 
       {theorems.length > 0 && (
-        <section className="mb-12">
-          <h2 className="mb-2 text-xs font-semibold uppercase tracking-widest text-[#888899]">
+        <section className="mb-14">
+          <h2 className="mb-1 text-lg font-semibold uppercase tracking-wide text-[#999]">
             Known Theorems
           </h2>
-          <div className="divide-y divide-[#2a2a3a] border-y border-[#2a2a3a]">
-            {theorems.map((c) => (
-              <CandidateRow key={c.slug} candidate={c} />
+          <div className="mb-6 border-b border-[#333]" />
+          <div className="space-y-4">
+            {theorems.map((c, i) => (
+              <CandidateBlock key={c.slug} candidate={c} index={i} />
             ))}
           </div>
         </section>

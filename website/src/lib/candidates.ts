@@ -49,15 +49,41 @@ const SUMMARIES: Record<string, string> = {
     "Sobolev embeddings below the critical exponent are compact.",
   "maximum-principle-harmonic":
     "Harmonic functions on bounded domains attain their maximum on the boundary.",
+  "wasserstein-metric":
+    "The p-Wasserstein distance defines a metric on probability measures with finite p-th moment.",
+  "kantorovich-duality-discrete":
+    "The minimum transport cost equals the maximum dual value (LP duality for the discrete Kantorovich problem).",
+  "optimal-coupling-existence":
+    "The Kantorovich optimal transport problem has a minimizer when the spaces are compact and the cost is lower semicontinuous.",
+  "erdos-straus":
+    "Every fraction 4/n with n >= 2 can be written as a sum of three unit fractions.",
+  "sunflower-conjecture":
+    "Any sufficiently large uniform family contains a sunflower, with a conjectured C^k bound.",
+  "chvatal-conjecture":
+    "In any ideal family, the largest intersecting subfamily consists of all sets containing some fixed element.",
+  "erdos-matching":
+    "Maximum size of a k-uniform family with bounded matching number.",
+  "sensitivity-conjecture-tight":
+    "Block sensitivity of Boolean functions is at most the square of sensitivity.",
+  "equational-theories-samples":
+    "Specific undecided implications between equational theories of magmas.",
 };
 
-/** Strip common emoji used as status markers in source READMEs. */
-function stripEmoji(s: string): string {
+// Use Unicode escapes to strip emoji without emoji literals in source.
+// U+2705 = checkmark, U+26A0 = warning, U+FE0F = variation selector,
+// U+274C = cross, U+1F534 = red circle, U+1F7E2 = green circle, U+1F7E1 = yellow circle
+const EMOJI_RE = /[\u2705\u274C\u26A0]\uFE0F?|[\u{1F534}\u{1F7E2}\u{1F7E1}]/gu;
+
+function stripForMarkdown(s: string): string {
   return s
-    .replace(/✅/g, "[yes]")
-    .replace(/⚠️?/g, "[partial]")
-    .replace(/❌/g, "[no]")
-    .replace(/🔴|🟢|🟡/g, "");
+    .replace(/\u2705\uFE0F?/g, "[yes]")
+    .replace(/\u26A0\uFE0F?/g, "[partial]")
+    .replace(/\u274C\uFE0F?/g, "[no]")
+    .replace(/[\u{1F534}\u{1F7E2}\u{1F7E1}]/gu, "");
+}
+
+function stripForCode(s: string): string {
+  return s.replace(EMOJI_RE, "").replace(/ {2,}/g, " ");
 }
 
 function extractSection(content: string, heading: string): string {
@@ -67,7 +93,7 @@ function extractSection(content: string, heading: string): string {
   );
   const match = content.match(regex);
   if (!match) return "";
-  return stripEmoji(match[1].replace(/<!--[\s\S]*?-->/g, "").trim());
+  return stripForMarkdown(match[1].replace(/<!--[\s\S]*?-->/g, "").trim());
 }
 
 function extractField(content: string, heading: string): string {
@@ -141,7 +167,7 @@ export function getAllCandidates(): Candidate[] {
           readmeContent,
           "Proof Complexity Estimate"
         ),
-        leanCode: leanCode.replace(/✅|⚠️?|❌|🔴|🟢|🟡/g, "").replace(/  +/g, " "),
+        leanCode: stripForCode(leanCode),
         contributor: extractField(readmeContent, "Contributor"),
       });
     }

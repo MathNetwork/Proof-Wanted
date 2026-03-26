@@ -14,9 +14,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="min-h-screen bg-[#111118] text-[#e8e8e8] antialiased">
-        <nav className="sticky top-0 z-50 border-b border-[#2a2a3a] bg-[#111118]/90 backdrop-blur-sm">
-          <div className="mx-auto flex max-w-[800px] items-center justify-between px-6 py-4">
+      <body className="min-h-screen bg-[#0f0f17] text-[#e8e8e8] antialiased">
+        <nav className="sticky top-0 z-50 border-b border-[#2a2a3a] bg-[#0f0f17]/90 backdrop-blur-sm">
+          <div className="mx-auto flex max-w-[900px] items-center justify-between px-6 py-4">
             <Link
               href="/"
               className="text-lg font-semibold text-white hover:text-[#93c5fd]"
@@ -41,7 +41,7 @@ export default function RootLayout({
             </div>
           </div>
         </nav>
-        <main className="mx-auto max-w-[800px] px-6 py-10">{children}</main>
+        <main className="mx-auto max-w-[900px] px-6 py-10">{children}</main>
         <footer className="border-t border-[#2a2a3a] py-8 text-center text-sm text-[#888899]">
           Proof Wanted — formalization candidates for{" "}
           <a

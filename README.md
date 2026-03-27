@@ -1,6 +1,6 @@
-# Formalization Candidates
+# Proof Wanted
 
-A curated collection of mathematical theorems and conjectures proposed for formalization in **Lean 4 + Mathlib**. Each candidate includes a precise mathematical description, a Lean 4 statement verified to type-check against current Mathlib, and an assessment of proof complexity and Mathlib readiness.
+A registry of mathematical theorems and open conjectures awaiting formalization in **Lean 4 + Mathlib**. Each entry includes a precise mathematical description, a Lean 4 statement that type-checks against current Mathlib (proofs are `sorry`), and a feasibility assessment.
 
 ## Candidates
 

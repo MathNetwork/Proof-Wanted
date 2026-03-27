@@ -9,6 +9,7 @@ import {
 import ReactMarkdown from "react-markdown";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
+import InlineMath from "./InlineMath";
 import type { Candidate } from "@/lib/candidates";
 
 function StatusIndicator({ status }: { status: Candidate["status"] }) {
@@ -67,8 +68,8 @@ export default function CandidateBlock({
 
         {/* Right column: content */}
         <div className="min-w-0 flex-1">
-          <h3 className="text-lg font-semibold text-[#e8e8e8] group-hover:text-[#93c5fd]">
-            {candidate.name || candidate.slug}
+          <h3 className="text-lg font-semibold text-[#e8e8e8] group-hover:text-[#93c5fd] [&_.katex]:text-inherit">
+            <InlineMath text={candidate.name || candidate.slug} />
           </h3>
 
           {candidate.mathStatement && (

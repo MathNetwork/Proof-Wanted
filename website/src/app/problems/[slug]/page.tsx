@@ -8,6 +8,7 @@ import {
 import { getAllCandidates, getCandidate } from "@/lib/candidates";
 import LeanCodeBlock from "@/components/LeanCodeBlock";
 import MarkdownContent from "@/components/MarkdownContent";
+import InlineMath from "@/components/InlineMath";
 
 export function generateStaticParams() {
   return getAllCandidates().map((c) => ({ slug: c.slug }));
@@ -66,8 +67,8 @@ export default async function ProblemPage({
         &larr; Back
       </Link>
 
-      <h1 className="text-2xl font-semibold text-white">
-        {c.name || c.slug}
+      <h1 className="text-2xl font-semibold text-white [&_.katex]:text-inherit">
+        <InlineMath text={c.name || c.slug} />
       </h1>
 
       <p className="mt-2 text-sm text-[#888899]">
@@ -104,13 +105,13 @@ export default async function ProblemPage({
           <h2 className="mb-4 text-xs font-semibold uppercase tracking-widest text-[#888899]">
             Context
           </h2>
-          <div className="space-y-6 text-sm text-[#ccc]">
+          <div className="space-y-6 text-[#ccc]">
             {c.whyGood && (
               <div>
                 <h3 className="mb-2 font-semibold text-[#e8e8e8]">
                   Why this is a good formalization target
                 </h3>
-                <MarkdownContent content={c.whyGood} />
+                <MarkdownContent content={c.whyGood} compact />
               </div>
             )}
             {c.infrastructure && (
@@ -118,7 +119,7 @@ export default async function ProblemPage({
                 <h3 className="mb-2 font-semibold text-[#e8e8e8]">
                   Mathlib infrastructure
                 </h3>
-                <MarkdownContent content={c.infrastructure} />
+                <MarkdownContent content={c.infrastructure} compact />
               </div>
             )}
             {c.proofComplexity && (
@@ -126,16 +127,26 @@ export default async function ProblemPage({
                 <h3 className="mb-2 font-semibold text-[#e8e8e8]">
                   Proof complexity
                 </h3>
-                <MarkdownContent content={c.proofComplexity} />
+                <MarkdownContent content={c.proofComplexity} compact />
               </div>
             )}
             {c.source && (
               <div>
                 <h3 className="mb-2 font-semibold text-[#e8e8e8]">Sources</h3>
-                <MarkdownContent content={c.source} />
+                <MarkdownContent content={c.source} compact />
               </div>
             )}
           </div>
+        </section>
+      )}
+
+      {/* Feasibility Assessment */}
+      {c.assessment && (
+        <section className="mb-10">
+          <h2 className="mb-4 text-xs font-semibold uppercase tracking-widest text-[#888899]">
+            Feasibility Assessment
+          </h2>
+          <MarkdownContent content={c.assessment} />
         </section>
       )}
 

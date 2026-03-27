@@ -16,6 +16,7 @@ export interface Candidate {
   proofComplexity: string;
   leanCode: string;
   contributor: string;
+  assessment: string;
 }
 
 const SUMMARIES: Record<string, string> = {
@@ -87,8 +88,9 @@ function stripForCode(s: string): string {
 }
 
 function extractSection(content: string, heading: string): string {
+  const escaped = heading.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
   const regex = new RegExp(
-    `^##\\s+${heading.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\s*\\n([\\s\\S]*?)(?=^##\\s|$)`,
+    `^##\\s+${escaped}\\s*\\n([\\s\\S]*?)(?=\\n##\\s|\\n#\\s|$(?!\\n))`,
     "m"
   );
   const match = content.match(regex);
@@ -101,13 +103,8 @@ function extractField(content: string, heading: string): string {
   return section.split("\n")[0]?.trim() || "";
 }
 
-function extractStatus(content: string): Candidate["status"] {
-  const leanSection = extractSection(content, "Lean 4 Statement");
-  if (/verified/i.test(leanSection)) return "verified";
-  if (/partial/i.test(leanSection)) return "partial";
-  if (/blocked/i.test(leanSection)) return "blocked";
-  const statusSection = extractSection(content, "Status");
-  if (/blocked/i.test(statusSection)) return "blocked";
+function extractStatus(slug: string): Candidate["status"] {
+  if (slug === "rellich-kondrachov") return "partial";
   return "draft";
 }
 
@@ -138,6 +135,7 @@ export function getAllCandidates(): Candidate[] {
     for (const folder of folders) {
       const readmePath = path.join(fullDir, folder, "README.md");
       const leanPath = path.join(fullDir, folder, "Statement.lean");
+      const assessPath = path.join(fullDir, folder, "ASSESSMENT.md");
 
       const readmeContent = fs.existsSync(readmePath)
         ? fs.readFileSync(readmePath, "utf-8")
@@ -145,6 +143,11 @@ export function getAllCandidates(): Candidate[] {
       const leanCode = fs.existsSync(leanPath)
         ? fs.readFileSync(leanPath, "utf-8")
         : "";
+      const assessmentRaw = fs.existsSync(assessPath)
+        ? stripForMarkdown(fs.readFileSync(assessPath, "utf-8"))
+        : "";
+      // Strip the top-level heading (# Formalization Assessment: ...)
+      const assessment = assessmentRaw.replace(/^#\s+[^\n]+\n+/, "");
 
       const readmeSummary = extractField(readmeContent, "Summary");
 
@@ -154,7 +157,7 @@ export function getAllCandidates(): Candidate[] {
         name: extractField(readmeContent, "Name"),
         area: extractField(readmeContent, "Area"),
         summary: readmeSummary || SUMMARIES[folder] || "",
-        status: extractStatus(readmeContent),
+        status: extractStatus(folder),
         estimatedLines: extractEstimatedLines(readmeContent),
         mathStatement: extractSection(readmeContent, "Mathematical Statement"),
         source: extractSection(readmeContent, "Source"),
@@ -169,6 +172,7 @@ export function getAllCandidates(): Candidate[] {
         ),
         leanCode: stripForCode(leanCode),
         contributor: extractField(readmeContent, "Contributor"),
+        assessment,
       });
     }
   }

@@ -5,12 +5,6 @@ import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import rehypeRaw from "rehype-raw";
 
-/**
- * Replace [yes]/[partial]/[no] text markers with inline SVG icons.
- * Done as raw HTML in the markdown string before rendering,
- * since react-markdown custom component overrides can miss
- * deeply nested text nodes.
- */
 function injectStatusIcons(md: string): string {
   return md
     .replace(
@@ -30,17 +24,21 @@ function injectStatusIcons(md: string): string {
 export default function MarkdownContent({
   content,
   serif,
+  compact,
 }: {
   content: string;
   serif?: boolean;
+  compact?: boolean;
 }) {
   const processed = injectStatusIcons(content);
 
   return (
     <div
       className={[
-        "prose prose-invert max-w-none prose-sm",
-        "prose-headings:text-[#e8e8e8] prose-headings:font-semibold",
+        "prose prose-invert max-w-none",
+        compact ? "prose-sm" : "",
+        "prose-headings:text-[#e8e8e8] prose-headings:font-semibold prose-headings:mt-6 prose-headings:mb-3",
+        "prose-h1:text-xl prose-h2:text-lg prose-h2:border-b prose-h2:border-[#252535] prose-h2:pb-2",
         "prose-p:text-[#ccc] prose-li:text-[#ccc]",
         "prose-a:text-[#93c5fd] prose-a:no-underline hover:prose-a:underline",
         "prose-strong:text-[#e8e8e8]",

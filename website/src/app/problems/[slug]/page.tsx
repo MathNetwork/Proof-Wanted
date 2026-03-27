@@ -82,7 +82,7 @@ export default async function ProblemPage({
           <h2 className="mb-4 text-xs font-semibold uppercase tracking-widest text-[#888899]">
             Mathematical Statement
           </h2>
-          <div className="rounded border border-[#2a2a3a] bg-[#1a1a24] p-6">
+          <div className="font-serif-math text-lg leading-relaxed text-[#ccc]">
             <MarkdownContent content={c.mathStatement} serif />
           </div>
         </section>

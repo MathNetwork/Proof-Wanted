@@ -46,8 +46,8 @@ export default function LeanCodeBlock({ code }: { code: string }) {
   const lines = code.split("\n");
 
   return (
-    <div className="overflow-x-auto rounded border border-[#2a2a3a] bg-[#0d0d14]">
-      <pre className="font-mono-code p-4 text-sm leading-relaxed text-[#d4d4d4]">
+    <div className="overflow-x-auto rounded bg-[#0d0d14]">
+      <pre className="font-mono-code p-5 text-sm leading-relaxed text-[#d4d4d4]">
         <code>
           {lines.map((line, i) => (
             <div key={i}>{line === "" ? "\n" : tokenizeLine(line)}</div>

@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { useRouter } from "next/navigation";
 import {
   CheckCircleIcon,
   ExclamationTriangleIcon,
@@ -44,41 +44,48 @@ export default function CandidateBlock({
   candidate: Candidate;
   index: number;
 }) {
+  const router = useRouter();
   const prefix = candidate.type === "conjecture" ? "C" : "T";
   const id = `${prefix}-${String(index + 1).padStart(2, "0")}`;
 
   return (
-    <Link
-      href={`/problems/${candidate.slug}`}
-      className="group block border-b border-[#252535] px-2 py-6 transition-colors hover:bg-[#14141e]"
+    <div
+      role="button"
+      tabIndex={0}
+      onClick={() => router.push(`/problems/${candidate.slug}`)}
+      onKeyDown={(e) => {
+        if (e.key === "Enter") router.push(`/problems/${candidate.slug}`);
+      }}
+      className="group cursor-pointer border-b border-[#252535] px-2 py-6 transition-colors hover:bg-[#14141e]"
     >
       <div className="flex items-start gap-5">
-        {/* Left: votes-style column with ID + status */}
+        {/* Left column: ID + status */}
         <div className="flex w-16 shrink-0 flex-col items-center gap-1 pt-1">
           <span className="font-mono text-sm text-[#555]">{id}</span>
           <StatusIndicator status={candidate.status} />
         </div>
 
-        {/* Right: content */}
+        {/* Right column: content */}
         <div className="min-w-0 flex-1">
-          {/* Title */}
           <h3 className="text-lg font-semibold text-[#e8e8e8] group-hover:text-[#93c5fd]">
             {candidate.name || candidate.slug}
           </h3>
 
-          {/* Math statement, rendered inline */}
           {candidate.mathStatement && (
             <div className="mt-2 font-serif-math text-[14px] leading-relaxed text-[#aaa] [&_.katex]:text-[#ccc]">
               <ReactMarkdown
                 remarkPlugins={[remarkMath]}
                 rehypePlugins={[rehypeKatex]}
+                components={{
+                  a: ({ children }) => <span>{children}</span>,
+                  p: ({ children }) => <p className="mb-2 last:mb-0">{children}</p>,
+                }}
               >
                 {candidate.mathStatement}
               </ReactMarkdown>
             </div>
           )}
 
-          {/* Tags row */}
           <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs">
             {candidate.area && (
               <span className="rounded bg-[#1a1a2a] px-2 py-0.5 text-[#888]">
@@ -93,6 +100,6 @@ export default function CandidateBlock({
           </div>
         </div>
       </div>
-    </Link>
+    </div>
   );
 }

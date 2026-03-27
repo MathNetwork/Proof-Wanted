@@ -16,7 +16,7 @@ export interface Candidate {
   proofComplexity: string;
   leanCode: string;
   contributor: string;
-  assessment: string;
+  verdict: string;
 }
 
 const SUMMARIES: Record<string, string> = {
@@ -135,19 +135,12 @@ export function getAllCandidates(): Candidate[] {
     for (const folder of folders) {
       const readmePath = path.join(fullDir, folder, "README.md");
       const leanPath = path.join(fullDir, folder, "Statement.lean");
-      const assessPath = path.join(fullDir, folder, "ASSESSMENT.md");
-
       const readmeContent = fs.existsSync(readmePath)
         ? fs.readFileSync(readmePath, "utf-8")
         : "";
       const leanCode = fs.existsSync(leanPath)
         ? fs.readFileSync(leanPath, "utf-8")
         : "";
-      const assessmentRaw = fs.existsSync(assessPath)
-        ? stripForMarkdown(fs.readFileSync(assessPath, "utf-8"))
-        : "";
-      // Strip the top-level heading (# Formalization Assessment: ...)
-      const assessment = assessmentRaw.replace(/^#\s+[^\n]+\n+/, "");
 
       const readmeSummary = extractField(readmeContent, "Summary");
 
@@ -172,7 +165,7 @@ export function getAllCandidates(): Candidate[] {
         ),
         leanCode: stripForCode(leanCode),
         contributor: extractField(readmeContent, "Contributor"),
-        assessment,
+        verdict: extractSection(readmeContent, "6. Verdict"),
       });
     }
   }

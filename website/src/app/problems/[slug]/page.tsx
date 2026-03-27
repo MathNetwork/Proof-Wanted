@@ -140,13 +140,13 @@ export default async function ProblemPage({
         </section>
       )}
 
-      {/* Feasibility Assessment */}
-      {c.assessment && (
+      {/* Verdict */}
+      {c.verdict && (
         <section className="mb-10">
           <h2 className="mb-4 text-xs font-semibold uppercase tracking-widest text-[#888899]">
-            Feasibility Assessment
+            Formalization Verdict
           </h2>
-          <MarkdownContent content={c.assessment} />
+          <MarkdownContent content={c.verdict} compact />
         </section>
       )}
 

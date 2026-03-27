@@ -93,5 +93,5 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). In short:
 
 ## Related Projects
 
-- [Mathlib4](https://github.com/leanprover-community/mathlib4) — Lean 4 数学库
-- [Lean Zulip](https://leanprover.zulipchat.com/) — 社区讨论
+- [Mathlib4](https://github.com/leanprover-community/mathlib4) — the Lean 4 mathematics library
+- [Lean Zulip](https://leanprover.zulipchat.com/) — community chat

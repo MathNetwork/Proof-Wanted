@@ -1,9 +1,14 @@
+"use client";
+
 import Link from "next/link";
 import {
   CheckCircleIcon,
   ExclamationTriangleIcon,
   XCircleIcon,
 } from "@heroicons/react/16/solid";
+import ReactMarkdown from "react-markdown";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
 import type { Candidate } from "@/lib/candidates";
 
 function StatusIndicator({ status }: { status: Candidate["status"] }) {
@@ -46,10 +51,10 @@ export default function CandidateBlock({
   return (
     <Link
       href={`/problems/${candidate.slug}`}
-      className="group block rounded-lg border border-[#252535] bg-[#14141e] p-6 transition-colors hover:border-[#3a3a5a] hover:bg-[#18182a]"
+      className="group block rounded-lg border border-[#252535] bg-[#14141e] p-7 transition-colors hover:border-[#3a3a5a] hover:bg-[#18182a]"
     >
-      {/* Top row: label + id */}
-      <div className="mb-4 flex items-center justify-between">
+      {/* Header: label + id */}
+      <div className="mb-3 flex items-center justify-between">
         <span className="text-[10px] font-semibold uppercase tracking-[0.15em] text-[#666]">
           {label}
         </span>
@@ -57,19 +62,24 @@ export default function CandidateBlock({
       </div>
 
       {/* Title */}
-      <h3 className="text-[17px] font-semibold leading-snug text-[#e8e8e8] group-hover:text-[#93c5fd]">
+      <h3 className="text-xl font-semibold leading-snug text-[#e8e8e8] group-hover:text-[#93c5fd]">
         {candidate.name || candidate.slug}
       </h3>
 
-      {/* Summary */}
-      {candidate.summary && (
-        <p className="mt-2 text-sm leading-relaxed text-[#999]">
-          {candidate.summary}
-        </p>
+      {/* Math statement */}
+      {candidate.mathStatement && (
+        <div className="mt-4 rounded border border-[#1e1e2e] bg-[#0f0f17] px-5 py-4 font-serif-math text-[15px] leading-relaxed text-[#ccc]">
+          <ReactMarkdown
+            remarkPlugins={[remarkMath]}
+            rehypePlugins={[rehypeKatex]}
+          >
+            {candidate.mathStatement}
+          </ReactMarkdown>
+        </div>
       )}
 
-      {/* Bottom row: area, status, lines */}
-      <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-[#666]">
+      {/* Meta row */}
+      <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-1 text-xs text-[#666]">
         {candidate.area && <span>{candidate.area}</span>}
         <StatusIndicator status={candidate.status} />
         {candidate.estimatedLines && (
